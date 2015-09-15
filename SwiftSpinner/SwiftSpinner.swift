@@ -100,7 +100,7 @@ public class SwiftSpinner: UIView {
     //
     public class func show(title: String, animated: Bool = true) -> SwiftSpinner {
         
-        let window = UIApplication.sharedApplication().windows.first as! UIWindow
+        let window = UIApplication.sharedApplication().windows.first! as UIWindow
         let spinner = SwiftSpinner.sharedInstance
         
         spinner.showWithDelayBlock = nil
@@ -377,7 +377,7 @@ public class SwiftSpinner: UIView {
     }
     
     public func updateFrame() {
-        let window = UIApplication.sharedApplication().windows.first as! UIWindow
+        let window = UIApplication.sharedApplication().windows.first! as UIWindow
         SwiftSpinner.sharedInstance.frame = window.frame
     }
     
