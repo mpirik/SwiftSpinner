@@ -12,15 +12,15 @@ import SwiftSpinner
 
 class ViewController: UIViewController {
     
-    func delay(#seconds: Double, completion:()->()) {
-        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
+    func delay(#seconds: Double, _ completion:@escaping ()->()) {
+        let popTime = DispatchTime.now() + Double(Int64( Double(NSEC_PER_SEC) * seconds )) / Double(NSEC_PER_SEC)
         
-        dispatch_after(popTime, dispatch_get_main_queue()) {
+        DispatchQueue.main.asyncAfter(deadline: popTime) {
             completion()
         }
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.demoSpinner()
